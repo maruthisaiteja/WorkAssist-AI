@@ -44,6 +44,7 @@ Faculty can log in using **EITHER** their Vardhaman Mail ID **OR** their VCE ID 
 | 32 | Dr Sameera Khan | VCE1865 | sameera1865@vardhaman.org | `pW4#hL5x` |
 | 33 | Ms. C Vineela | VCE1858 | vineela1858@vardhaman.org | `vC9$bN2m` |
 | 34 | Ms. Shruti S Soma | VCE1911 | shruti1911@vardhaman.org | `fX3*gP6n` |
+| 35 | Mr.P.Maruthi Sai Teja (Student) | VCE1956 | indiacart8@gmail.com | `mZ9$yR4p` |
 
 ---
 ## 🚀 Production Deployment Guide

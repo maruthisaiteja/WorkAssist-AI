@@ -35,7 +35,8 @@ const facultyData = [
   { name: "Mr Shobanbabu R J", designation: "Assistant Professor", vceId: "VCE1818", email: "shobanbabu1818@vardhaman.org", phone: "7904708988", role: "FACULTY", passwordHash: "tD8@mR3c" },
   { name: "Dr Sameera Khan", designation: "Assistant Professor", vceId: "VCE1865", email: "sameera1865@vardhaman.org", phone: "7389377104", role: "FACULTY", passwordHash: "pW4#hL5x" },
   { name: "Ms. C Vineela", designation: "Assistant Professor", vceId: "VCE1858", email: "vineela1858@vardhaman.org", phone: "9849630213", role: "FACULTY", passwordHash: "vC9$bN2m" },
-  { name: "Ms. Shruti S Soma", designation: "Assistant Professor", vceId: "VCE1911", email: "shruti1911@vardhaman.org", phone: "8590537845", role: "FACULTY", passwordHash: "fX3*gP6n" }
+  { name: "Ms. Shruti S Soma", designation: "Assistant Professor", vceId: "VCE1911", email: "shruti1911@vardhaman.org", phone: "8590537845", role: "FACULTY", passwordHash: "fX3*gP6n" },
+  { name: "Mr.P.Maruthi Sai Teja", designation: "Student", vceId: "VCE1956", email: "indiacart8@gmail.com", phone: "9490298994", role: "FACULTY", passwordHash: "mZ9$yR4p" }
 ];
 
 async function main() {
