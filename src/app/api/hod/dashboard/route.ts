@@ -25,5 +25,5 @@ export async function GET() {
     overdue: tasks.filter(t => t.status === 'OVERDUE' || (new Date(t.deadline) < new Date() && t.status !== 'COMPLETED')).length,
   };
 
-  return NextResponse.json({ tasks, stats });
+  return NextResponse.json({ tasks, stats, user: { name: user.name } });
 }

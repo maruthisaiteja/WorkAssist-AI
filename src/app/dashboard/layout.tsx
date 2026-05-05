@@ -71,9 +71,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="font-bold text-white text-lg truncate"
+                className="flex items-center gap-3"
               >
-                Vardhaman IT
+                <img src="/vce-logo.png" alt="VCE Logo" className="w-8 h-8 object-contain bg-white rounded-md p-1" />
+                <div className="flex flex-col">
+                  <span className="font-bold text-white text-base leading-tight">Vardhaman,</span>
+                  <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">IT dept</span>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

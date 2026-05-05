@@ -19,6 +19,8 @@ export default function FacultyDashboard() {
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
 
+  const [userName, setUserName] = useState<string>('');
+
   useEffect(() => {
     setMounted(true);
     fetchTasks();
@@ -30,6 +32,7 @@ export default function FacultyDashboard() {
       .then(res => res.json())
       .then(data => {
         setTasks(data.tasks);
+        setUserName(data.user?.name || '');
         setLoading(false);
       });
   };
@@ -55,7 +58,7 @@ export default function FacultyDashboard() {
     <div className="space-y-8 animate-in pb-10">
       <div className="bg-white p-8 rounded-3xl border border-slate-200 card-shadow flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">Your Dashboard</h1>
+          <h1 className="text-3xl font-bold text-slate-900">{userName ? `Welcome, ${userName}` : 'Your Dashboard'}</h1>
           <p className="text-slate-500 font-medium mt-1">Track and update your assigned tasks here.</p>
         </div>
         <div className="px-6 py-3 bg-blue-50 text-blue-700 rounded-2xl font-bold text-sm border border-blue-100 shadow-sm flex items-center gap-2">

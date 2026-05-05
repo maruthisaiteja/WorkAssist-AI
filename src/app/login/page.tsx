@@ -44,23 +44,24 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f8fafc] p-4">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200"
       >
-        <div className="bg-blue-600 p-8 text-white text-center">
-          <motion.div 
+        <div className="bg-white p-8 text-center border-b border-slate-100 relative">
+          {/* We use a white background header for the logo to look best */}
+          <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm"
+            className="flex justify-center mb-4"
           >
-            <ShieldCheck size={32} />
+            <img src="/vce-logo.png" alt="Vardhaman College Of Engineering Logo" className="h-24 object-contain drop-shadow-md" />
           </motion.div>
-          <h1 className="text-2xl font-bold">Vardhaman College</h1>
-          <p className="text-blue-100 opacity-90">Task Management & Alert System</p>
+          <h1 className="text-2xl font-bold text-slate-800">VCE Task Management</h1>
+          <p className="text-slate-500 font-medium text-sm mt-1">IT Department Portal</p>
         </div>
-        
+
         <form onSubmit={handleLogin} className="p-8 space-y-6">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
@@ -78,7 +79,7 @@ export default function LoginPage() {
               />
             </div>
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Password</label>
             <div className="relative">
@@ -110,7 +111,7 @@ export default function LoginPage() {
               </>
             )}
           </button>
-          
+
           <div className="text-center text-sm text-slate-500">
             <p>HOD Login: hod.it@vardhaman.org</p>
             <p>Password: Vardhaman@123</p>

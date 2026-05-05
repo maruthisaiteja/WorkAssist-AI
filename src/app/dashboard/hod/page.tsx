@@ -67,7 +67,7 @@ export default function HODDashboard() {
       {/* Header with Greeting */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-8 rounded-3xl border border-slate-200 card-shadow">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">Welcome, Dr. Sreenivasulu</h1>
+          <h1 className="text-3xl font-bold text-slate-900">Welcome, {data.user?.name || 'Dr. Sreenivasulu Gogula'}</h1>
           <p className="text-slate-500 font-medium mt-1">Here is what's happening in the IT Department today.</p>
         </div>
         <Link href="/dashboard/hod/assign" className="flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30 text-base font-bold">

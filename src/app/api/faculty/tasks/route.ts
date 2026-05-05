@@ -17,5 +17,5 @@ export async function GET() {
     orderBy: { deadline: 'asc' }
   });
 
-  return NextResponse.json({ tasks });
+  return NextResponse.json({ tasks, user: { name: user.name } });
 }
