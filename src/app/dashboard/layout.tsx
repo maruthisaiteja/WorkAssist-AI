@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { 
-  LayoutDashboard, 
-  CheckCircle2, 
-  Clock, 
-  AlertCircle, 
-  LogOut, 
-  Bell, 
+import {
+  LayoutDashboard,
+  CheckCircle2,
+  Clock,
+  AlertCircle,
+  LogOut,
+  Bell,
   User as UserIcon,
   Menu,
   X,
@@ -22,7 +22,7 @@ import Link from 'next/link';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const [user, setUser] = useState<{name: string, role: string, email: string} | null>(null);
+  const [user, setUser] = useState<{ name: string, role: string, email: string } | null>(null);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -59,7 +59,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="min-h-screen bg-[#f8fafc] flex">
       {/* Sidebar */}
-      <motion.aside 
+      <motion.aside
         initial={false}
         animate={{ width: isSidebarOpen ? 260 : 80 }}
         className="bg-slate-900 text-slate-300 flex-shrink-0 relative hidden md:flex flex-col transition-all duration-300"
@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="p-6 flex items-center justify-between">
           <AnimatePresence mode="wait">
             {isSidebarOpen && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               >
                 <img src="/vce-logo.png" alt="VCE Logo" className="w-8 h-8 object-contain bg-white rounded-md p-1" />
                 <div className="flex flex-col">
-                  <span className="font-bold text-white text-base leading-tight">Vardhaman,</span>
+                  <span className="font-bold text-white text-base leading-tight">Vardhaman</span>
                   <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">IT dept</span>
                 </div>
               </motion.div>
@@ -91,11 +91,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center space-x-3 p-3 rounded-xl transition-all ${
-                pathname === item.href 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' 
-                  : 'hover:bg-slate-800 text-slate-400 hover:text-white'
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-xl transition-all ${pathname === item.href
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20'
+                : 'hover:bg-slate-800 text-slate-400 hover:text-white'
+                }`}
             >
               <item.icon size={22} />
               {isSidebarOpen && <span className="font-medium">{item.name}</span>}
@@ -104,7 +103,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </nav>
 
         <div className="p-4 border-t border-slate-800 space-y-2">
-          <button 
+          <button
             onClick={handleLogout}
             className="flex items-center space-x-3 p-3 w-full rounded-xl hover:bg-red-500/10 text-slate-400 hover:text-red-500 transition-all"
           >
