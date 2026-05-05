@@ -7,7 +7,7 @@ import { LogIn, ShieldCheck, User as UserIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function LoginPage() {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ identifier, password }),
       });
 
       const data = await res.json();
@@ -64,18 +64,18 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin} className="p-8 space-y-6">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+            <label className="block text-sm font-medium text-slate-700 mb-2">Email Address or VCE ID</label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
                 <UserIcon size={18} />
               </span>
               <input
-                type="email"
+                type="text"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-900"
-                placeholder="hod.it@vardhaman.org"
+                placeholder="VCE1678 or hod.it@vardhaman.org"
               />
             </div>
           </div>

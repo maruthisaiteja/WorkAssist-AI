@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  CheckCircle2, 
-  Clock, 
-  AlertCircle, 
+import {
+  CheckCircle2,
+  Clock,
+  AlertCircle,
   ExternalLink,
   ClipboardList,
   Calendar,
@@ -80,12 +80,11 @@ export default function FacultyDashboard() {
               <div className="flex-1 space-y-4">
                 <div className="flex flex-wrap items-center gap-3">
                   <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{task.title}</h3>
-                  <span className={`text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-wider ${
-                    task.priority === 'URGENT' ? 'bg-red-500 text-white' :
+                  <span className={`text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-wider ${task.priority === 'URGENT' ? 'bg-red-500 text-white' :
                     task.priority === 'HIGH' ? 'bg-orange-500 text-white' :
-                    task.priority === 'MEDIUM' ? 'bg-blue-500 text-white' :
-                    'bg-slate-500 text-white'
-                  }`}>
+                      task.priority === 'MEDIUM' ? 'bg-blue-500 text-white' :
+                        'bg-slate-500 text-white'
+                    }`}>
                     {task.priority}
                   </span>
                   <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-[10px] font-black uppercase tracking-wider">
@@ -93,7 +92,7 @@ export default function FacultyDashboard() {
                   </span>
                 </div>
                 <p className="text-slate-500 text-base leading-relaxed max-w-3xl">{task.description}</p>
-                
+
                 <div className="flex flex-wrap items-center gap-6 pt-2">
                   <div className="flex items-center gap-2.5 text-sm font-bold text-slate-600">
                     <div className="p-2 bg-slate-100 rounded-xl text-slate-400">
@@ -101,19 +100,17 @@ export default function FacultyDashboard() {
                     </div>
                     <span>Due: {mounted ? new Date(task.deadline).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '...'}</span>
                   </div>
-                  
-                  <div className={`flex items-center gap-2 text-sm font-black uppercase tracking-widest ${
-                    task.status === 'COMPLETED' ? 'text-emerald-600' :
+
+                  <div className={`flex items-center gap-2 text-sm font-black uppercase tracking-widest ${task.status === 'COMPLETED' ? 'text-emerald-600' :
                     task.status === 'IN_PROGRESS' ? 'text-blue-600' :
-                    task.status === 'OVERDUE' ? 'text-red-600' :
-                    'text-amber-500'
-                  }`}>
-                    <div className={`w-2.5 h-2.5 rounded-full ${
-                      task.status === 'COMPLETED' ? 'bg-emerald-500' :
+                      task.status === 'OVERDUE' ? 'text-red-600' :
+                        'text-amber-500'
+                    }`}>
+                    <div className={`w-2.5 h-2.5 rounded-full ${task.status === 'COMPLETED' ? 'bg-emerald-500' :
                       task.status === 'IN_PROGRESS' ? 'bg-blue-500 animate-pulse' :
-                      task.status === 'OVERDUE' ? 'bg-red-500 animate-bounce' :
-                      'bg-amber-500'
-                    }`}></div>
+                        task.status === 'OVERDUE' ? 'bg-red-500 animate-bounce' :
+                          'bg-amber-500'
+                      }`}></div>
                     {task.status.replace('_', ' ')}
                   </div>
                 </div>
@@ -129,7 +126,7 @@ export default function FacultyDashboard() {
                     <span>Acknowledge</span>
                   </button>
                 )}
-                
+
                 {task.status === 'IN_PROGRESS' && (
                   <button
                     onClick={() => updateStatus(task.id, 'COMPLETED')}
