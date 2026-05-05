@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  HOD
+  FACULTY
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum Category {
+  ACADEMIC
+  ADMINISTRATIVE
+  RESEARCH
+  EVENT
+  OTHER
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  OVERDUE
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  designation  String
+  email        String   @unique
+  phone        String?
+  role         Role     @default(FACULTY)
+  passwordHash String
+  createdAt    DateTime @default(now())
+  
+  assignedTasks Task[]   @relation("AssignedFaculty")
+  notifications Notification[]
+  reminderLogs  ReminderLog[]
+}
+
+model Task {
+  id            String   @id @default(cuid())
+  title         String
+  description   String
+  category      Category @default(OTHER)
+  priority      Priority @default(MEDIUM)
+  assignedById  String
+  deadline      DateTime
+  status        Status   @default(PENDING)
+  attachments   String?  // JSON string or URL
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  assignedTo    User[]   @relation("AssignedFaculty")
+  notifications Notification[]
+  reminderLogs  ReminderLog[]
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  taskId    String?
+  userId    String
+  type      String   // assignment, reminder, completion, acknowledgment, overdue
+  channel   String   // email, sms, inapp
+  content   String
+  sentAt    DateTime @default(now())
+  isRead    Boolean  @default(false)
+
+  task      Task?    @relation(fields: [taskId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ReminderLog {
+  id           String   @id @default(cuid())
+  taskId       String
+  userId       String
+  reminderType String   // 4hr, 2hr, 1hr
+  sentAt       DateTime @default(now())
+
+  task         Task     @relation(fields: [taskId], references: [id])
+  user         User     @relation(fields: [userId], references: [id])
+}
