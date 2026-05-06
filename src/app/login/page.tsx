@@ -111,11 +111,6 @@ export default function LoginPage() {
               </>
             )}
           </button>
-
-          <div className="text-center text-sm text-slate-500">
-            <p>HOD Login: hod.it@vardhaman.org</p>
-            <p>Password: Vardhaman@123</p>
-          </div>
         </form>
       </motion.div>
     </div>

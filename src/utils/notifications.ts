@@ -25,12 +25,9 @@ export async function sendEmailNotification(to: string, facultyName: string, sub
 
   const emailHtml = `
     <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px;">
-      <h2 style="color: #2563eb;">Vardhaman IT - Task Management</h2>
+      <h2 style="color: #2563eb;">Department Of Information Technology,VCE</h2>
       <p>Dear <strong>${facultyName}</strong>,</p>
       <p>${message}</p>
-      <div style="margin-top: 32px; padding-top: 16px; border-t: 1px solid #f1f5f9; font-size: 12px; color: #64748b;">
-        This is an automated alert from the HOD Task Management System, IT Department.
-      </div>
     </div>
   `;
 
@@ -57,7 +54,7 @@ export async function sendSMSNotification(to: string, facultyName: string, messa
 
   try {
     await twilioClient.messages.create({
-      body: `Vardhaman IT: Dear ${facultyName}, ${message}`,
+      body: `\nDept. Of INF,VCE  \nDear ${facultyName},\n${message}\n Dr.Sreenivasulu Gogula\nHoD-INF,VCE`,
       from: process.env.TWILIO_PHONE_NUMBER,
       to: to,
     });

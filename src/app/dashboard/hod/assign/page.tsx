@@ -190,9 +190,24 @@ export default function AssignTaskPage() {
 
           {/* Faculty Selection */}
           <div>
-            <label className="block text-sm font-bold text-slate-700 mb-4 flex items-center gap-2">
-              <Users size={16} /> Assign To (Select Faculty)
-            </label>
+            <div className="flex items-center justify-between mb-4">
+              <label className="block text-sm font-bold text-slate-700 flex items-center gap-2">
+                <Users size={16} /> Assign To (Select Faculty)
+              </label>
+              <button
+                type="button"
+                onClick={() => {
+                  if (formData.facultyIds.length === faculty.length) {
+                    setFormData({ ...formData, facultyIds: [] });
+                  } else {
+                    setFormData({ ...formData, facultyIds: faculty.map(f => f.id) });
+                  }
+                }}
+                className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors bg-blue-50 px-3 py-1.5 rounded-lg"
+              >
+                {formData.facultyIds.length === faculty.length && faculty.length > 0 ? 'Deselect All' : 'Select All'}
+              </button>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto p-2 bg-slate-50 rounded-2xl border border-slate-200">
               {faculty.map(f => (
                 <button

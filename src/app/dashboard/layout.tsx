@@ -22,7 +22,7 @@ import Link from 'next/link';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const [user, setUser] = useState<{ name: string, role: string, email: string } | null>(null);
+  const [user, setUser] = useState<{ name: string, role: string, email: string, vceId: string } | null>(null);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -53,6 +53,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: 'Task Reports', href: '/dashboard/hod/reports', icon: ClipboardList },
   ] : [
     { name: 'My Tasks', href: '/dashboard/faculty', icon: CheckCircle2 },
+    { name: 'Assigned By Me', href: '/dashboard/faculty/assigned-overview', icon: LayoutDashboard },
+    { name: 'Assign Task', href: '/dashboard/faculty/assign', icon: PlusSquare },
     { name: 'Deadlines', href: '/dashboard/faculty/deadlines', icon: Clock },
   ];
 
@@ -136,8 +138,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <div className="text-sm font-bold text-slate-800">{mounted ? user?.name : '...'}</div>
                 <div className="text-xs text-slate-500 uppercase tracking-tighter">{mounted ? user?.role : '...'}</div>
               </div>
-              <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold border-2 border-blue-200">
-                {mounted ? (user?.name?.charAt(0) || 'U') : '?'}
+              <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-slate-200 overflow-hidden bg-blue-100 text-blue-600">
+                {mounted && user?.vceId ? (
+                  <>
+                    <img 
+                      src={`/images/faculty/${user.vceId}.png`} 
+                      alt={user.name} 
+                      className="w-full h-full object-cover" 
+                      onError={(e) => { 
+                        e.currentTarget.style.display = 'none'; 
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
+                      }} 
+                    />
+                    <span className="hidden">{user.name?.charAt(0) || 'U'}</span>
+                  </>
+                ) : (
+                  <span>{mounted ? (user?.name?.charAt(0) || 'U') : '?'}</span>
+                )}
               </div>
             </div>
           </div>
