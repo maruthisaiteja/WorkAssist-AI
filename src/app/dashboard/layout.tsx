@@ -22,13 +22,16 @@ import Link from 'next/link';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const [user, setUser] = useState<{ name: string, role: string, email: string, vceId: string } | null>(null);
+  const [user, setUser] = useState<{ name: string, role: string, email: string, vceId: string, designation?: string } | null>(null);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false);
+    }
     const fetchUser = async () => {
       const res = await fetch('/api/auth/me');
       if (res.ok) {
@@ -59,12 +62,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   ];
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] flex">
+    <div className="h-screen bg-[#f8fafc] flex overflow-hidden">
+      {/* Mobile Overlay */}
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSidebarOpen(false)}
+            className="fixed inset-0 bg-slate-900/50 z-40 md:hidden"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar */}
       <motion.aside
         initial={false}
         animate={{ width: isSidebarOpen ? 260 : 80 }}
-        className="bg-slate-900 text-slate-300 flex-shrink-0 relative hidden md:flex flex-col transition-all duration-300"
+        className={`bg-slate-900 text-slate-300 flex-shrink-0 flex flex-col transition-all duration-300 z-50 fixed inset-y-0 left-0 md:relative ${!isSidebarOpen ? '-translate-x-full md:translate-x-0' : 'translate-x-0'}`}
       >
         <div className="p-6 flex items-center justify-between">
           <AnimatePresence mode="wait">
@@ -120,7 +136,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Top bar */}
         <header className="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-10">
           <div className="flex items-center space-x-4">
-            <button className="md:hidden p-2 text-slate-600">
+            <button onClick={() => setSidebarOpen(true)} className="md:hidden p-2 text-slate-600">
               <Menu size={24} />
             </button>
             <h2 className="text-xl font-bold text-slate-800 capitalize">
@@ -136,7 +152,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="flex items-center space-x-3 pl-6 border-l border-slate-200">
               <div className="text-right hidden sm:block">
                 <div className="text-sm font-bold text-slate-800">{mounted ? user?.name : '...'}</div>
-                <div className="text-xs text-slate-500 uppercase tracking-tighter">{mounted ? user?.role : '...'}</div>
+                <div className="text-xs text-slate-500 uppercase tracking-tighter">{mounted ? (user?.designation || user?.role) : '...'}</div>
               </div>
               <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-slate-200 overflow-hidden bg-blue-100 text-blue-600">
                 {mounted && user?.vceId ? (

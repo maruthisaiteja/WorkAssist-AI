@@ -25,7 +25,6 @@ export async function sendEmailNotification(to: string, facultyName: string, sub
 
   const emailHtml = `
     <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px;">
-      <h2 style="color: #2563eb;">Department Of Information Technology,VCE</h2>
       <p>Dear <strong>${facultyName}</strong>,</p>
       <p>${message}</p>
     </div>

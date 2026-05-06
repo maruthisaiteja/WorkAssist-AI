@@ -36,7 +36,7 @@ export async function POST(req: Request) {
       const emailHtmlMessage = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #1B3A6B; border-bottom: 2px solid #1B3A6B; padding-bottom: 10px;">
-            Vardhaman IT - Task Management
+            Dept. of INF - Task Management System
           </h2>
           
           <p>You have been assigned a new task. Please find the details below:</p>

@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const facultyData = [
-  { name: "Dr. Srinivasulu Gogula", designation: "Professor & HOD", vceId: "VCE1678", email: "gsrinivasulu1678@vardhaman.org", phone: "+919866090396", role: "HOD", passwordHash: "VCE1678" },
+  { name: "Dr. Sreenivasulu Gogula", designation: "Professor & HOD", vceId: "VCE1678", email: "gsrinivasulu1678@vardhaman.org", phone: "+919866090396", role: "HOD", passwordHash: "VCE1678" },
   { name: "Dr. Muni Sekhar Velpuru", designation: "Associate Professor", vceId: "VCE296", email: "munisek@vardhaman.org", phone: "+919618392466", role: "FACULTY", passwordHash: "VCE296" },
   { name: "Mr. Vivek Kulkarni", designation: "Associate Professor", vceId: "VCE850", email: "vivek@vardhaman.org", phone: "+919866758870", role: "FACULTY", passwordHash: "VCE850" },
   { name: "Dr Yesubabu Mannava", designation: "Associate Professor", vceId: "VCE1320", email: "mannavababu@vardhaman.org", phone: "+919985171170", role: "FACULTY", passwordHash: "VCE1320" },

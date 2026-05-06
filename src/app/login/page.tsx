@@ -58,8 +58,7 @@ export default function LoginPage() {
           >
             <img src="/vce-logo.png" alt="Vardhaman College Of Engineering Logo" className="h-24 object-contain drop-shadow-md" />
           </motion.div>
-          <h1 className="text-2xl font-bold text-slate-800">VCE Task Management</h1>
-          <p className="text-slate-500 font-medium text-sm mt-1">IT Department Portal</p>
+          <h1 className="text-2xl font-bold text-slate-800">INF Task-Management Portal</h1>
         </div>
 
         <form onSubmit={handleLogin} className="p-8 space-y-6">
